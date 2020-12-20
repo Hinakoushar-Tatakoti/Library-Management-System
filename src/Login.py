@@ -15,7 +15,7 @@ class Login:
     def get_password(self):
         return self._password
 
-    def check_user(self,username, password):
+    def check_user(self, username, password):
         with open("../data/UserData.txt", "r") as f:
             lines = f.read()
             line = lines.split("\n")
