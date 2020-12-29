@@ -30,10 +30,22 @@ class Register:
         return self._type
 
     def register_user(self, username, password, email, usertype):
-        with open("../data/UserData.txt", "a") as f:
+        with open("../database/UserData.txt", "a") as f:
             f.write(username + " " + password + " " + email + " " + usertype)
             f.write("\n")
         return True
 
+
+def register_user():
+    username = input("Enter the Username:\n")
+    password = input("Enter the Password:\n")
+    email = input("Enter the Email Id:\n")
+    type = input("Enter the user type:\n")
+    reg = Register(username, password, email, type)
+    if reg.register_user(reg.get_username(), reg.get_password(), reg.get_email(), reg.get_type()):
+        print("Successfully logged in!!! " + reg.get_username())
+    else:
+        print(" Registration failed for !!! " + reg.get_username())
+        exit()
 
 

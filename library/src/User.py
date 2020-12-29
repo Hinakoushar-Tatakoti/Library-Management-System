@@ -1,12 +1,15 @@
-from Books import Books
+from Books import *
 
-b1 = Books()
+
 
 
 class User:
+    def __init__(self,username):
+        self._username = username
 
     def actions(self):
-        while (True):
+        b1 = Books(self._username)
+        while True:
             print("Let's do some actions on the account!!")
             print("1", "display_books")
             print("2", "search book By book_Name")
@@ -28,14 +31,13 @@ class User:
                     book_name = input("Enter the name of book: ")
                     found = b1.searchByName(book_name)
                     if found:
-                        print(f"\n The Book {book_name} is found !! \n)")
+                        print(f"\n The Book {book_name} is found !! \n")
                     else:
                         print(f"\nThe Book {book_name} your searching is not found !! give it another short\n")
 
                 elif user_choice == 3:
                     book = input("please Enter the name of the book you want to borrow :")
-                    user = input("please enter your name:")
-                    b1.borrow_book(book, user)
+                    b1.borrow_book(book)
                     print("\n")
 
                 elif user_choice == 4:

@@ -16,7 +16,7 @@ class Login:
         return self._password
 
     def check_user(self, username, password):
-        with open("../data/UserData.txt", "r") as f:
+        with open("../database/UserData.txt", "r") as f:
             lines = f.read()
             line = lines.split("\n")
             for l in list(line):
@@ -29,3 +29,13 @@ class Login:
                     return True
 
 
+def login():
+    username = input("Enter the Username:\n")
+    password = input("Enter the Password:\n")
+    log = Login(username, password)
+    if log.check_user(log.get_username(), log.get_password()):
+        print(f"Successfully logged in {username} \n")
+        return username;
+    else:
+        print(f"login failed for {username} \n")
+        exit()

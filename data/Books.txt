@@ -1,4 +1,0 @@
-Software engineering
-Statistical computing
-Big data
-Python Programming
