@@ -18,7 +18,7 @@ class Books:
         if found:
             issued_date = date.today()
             return_date = date.today() + timedelta(days=15)
-            with open("../database/IssuedBook.txt", "a+") as f:
+            with open("../../../database/IssuedBook.txt", "a+") as f:
                 f.write(self._username + "," + book_name + "," + str(issued_date) + "," + str(return_date))
                 f.write("\n")
             # updateBooks(book_name)
@@ -43,7 +43,7 @@ class Books:
 
 def list_of_books():
     books = []
-    with open("../database/Books.txt", "r") as bf:
+    with open("../../../database/Books.txt", "r") as bf:
         book_list = bf.readlines()
         for i in book_list:
             j = i.replace('\n', '').split(',')
@@ -53,7 +53,7 @@ def list_of_books():
 
 def load_fine():
     fines = []
-    with open("../database/Fine.txt", "r") as bf:
+    with open("../../../database/Fine.txt", "r") as bf:
         pay = bf.readlines()
         for f in pay:
             j = f.replace('\n', '').split(',')
