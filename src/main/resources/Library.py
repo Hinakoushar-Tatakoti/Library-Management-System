@@ -1,3 +1,5 @@
+from User import *
+
 
 class Login:
 
@@ -26,11 +28,11 @@ class Login:
 
 
 class Register:
-    def __init__(self, username, password, email, type):
-        self.username = username
-        self.password = password
-        self.email = email
-        self.type = type
+    def __init__(self, uname, passwd, mail, type_of_user):
+        self.username = uname
+        self.password = passwd
+        self.email = mail
+        self.type = type_of_user
 
     def register_user(self):
         with open("../../../database/UserData.txt", "a") as f:
@@ -54,14 +56,16 @@ if __name__ == '__main__':
         if option == 1:
             username = input("Enter the Username:\n")
             password = input("Enter the Password:\n")
-            login = Login(username,password)
+            login = Login(username, password)
             login.login()
+            user = User(username)
+            user.actions()
         elif option == 2:
             username = input("Enter the Username:\n")
             password = input("Enter the Password:\n")
             email = input("Enter the Email Id:\n")
-            type = input("Enter the user type:\n")
-            register = Register(username, password, email, type)
+            user_type = input("Enter the user type:\n")
+            register = Register(username, password, email, user_type)
             res = register.register_user()
             if res:
                 print(f" {username} Successfully Registered in!!! ")

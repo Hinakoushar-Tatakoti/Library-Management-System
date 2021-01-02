@@ -1,8 +1,5 @@
 from Books import *
 
-
-
-
 class User:
     def __init__(self,username):
         self._username = username
@@ -29,8 +26,7 @@ class User:
 
                 elif user_choice == 2:
                     book_name = input("Enter the name of book: ")
-                    found = b1.searchByName(book_name)
-                    if found:
+                    if b1.searchByName(book_name):
                         print(f"\n The Book {book_name} is found !! \n")
                     else:
                         print(f"\nThe Book {book_name} your searching is not found !! give it another short\n")
@@ -48,7 +44,6 @@ class User:
 
                 elif user_choice == 5:
                     book = input("please Enter the name of the book having fine :")
-                    user = input("please enter your name:")
-                    b1.cheack_fine(book, user)
+                    b1.check_fine(self._username,book)
 
 

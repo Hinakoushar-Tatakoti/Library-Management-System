@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+import datetime
 
 
 class Books:
@@ -6,7 +6,6 @@ class Books:
         """ Fetching all the book data"""
         self.books = list_of_books()
         self._username = username
-        self.fine = load_fine()
 
     def display_books(self):
         print("The books are present at the Beuth University Library")
@@ -16,8 +15,8 @@ class Books:
     def borrow_book(self, book_name):
         found = [book[0] == book_name for book in self.books]
         if found:
-            issued_date = date.today()
-            return_date = date.today() + timedelta(days=15)
+            issued_date = datetime.datetime.today()
+            return_date = datetime.datetime.today() + datetime.timedelta(days=15)
             with open("../../../database/IssuedBook.txt", "a+") as f:
                 f.write(self._username + "," + book_name + "," + str(issued_date) + "," + str(return_date))
                 f.write("\n")
@@ -26,16 +25,24 @@ class Books:
                   f"otherwise 1 EURO/day fine will be charged")
 
     def return_book(self, book_name, username):
-        fine = self.check_fine(username)
-        print(f"You have {fine} please pay before returning {book_name}")
+        self.check_fine(username, book_name)
 
-    def check_fine(self, username):
-        for f in self.fine:
-            for g in f:
-                print("G is ", g)
-                l = g.split(",")
-                if username == l[0]:
-                    return l[1]
+    def check_fine(self, username, book):
+        money = 0
+        with open("../../../database/IssuedBook.txt", "r") as f:
+            book_list = f.readlines()
+            for b in book_list:
+                con = b.split(",")
+                print(con)
+                if con[0] == username and con[1] == book:
+                    con[3] = con[3].strip('\n')
+                    d1 = datetime.datetime.strptime(con[2], '%Y-%m-%d %H:%M:%S.%f')
+                    d2 = datetime.datetime.strptime(con[3], '%Y-%m-%d %H:%M:%S.%f')
+                    fine = 15 - abs(d1.day - d2.day)
+                    if fine < 0:
+                        money = abs(fine)
+
+        print(f"You have {money} Euro fine !!! :( please pay before returning {book}")
 
     def searchByName(self, book_name):
         return [book[0] == book_name for book in self.books]
@@ -45,17 +52,8 @@ def list_of_books():
     books = []
     with open("../../../database/Books.txt", "r") as bf:
         book_list = bf.readlines()
-        for i in book_list:
-            j = i.replace('\n', '').split(',')
-            books.append(j)
+        [books.append(load(i)) for i in book_list]
         return books
 
 
-def load_fine():
-    fines = []
-    with open("../../../database/Fine.txt", "r") as bf:
-        pay = bf.readlines()
-        for f in pay:
-            j = f.replace('\n', '').split(',')
-            fines.append(j)
-    return fines
+load = lambda x: x.replace('\n', '').split(',')
