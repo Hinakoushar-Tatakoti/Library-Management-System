@@ -2,10 +2,10 @@ import datetime
 
 
 class Books:
-    def __init__(self, username):
+    def __init__(self, uname):
         """ Fetching all the book data"""
         self.books = list_of_books()
-        self._username = username
+        self._username = uname
 
     def display_books(self):
         print("The books are present at the Beuth University Library")
@@ -41,8 +41,10 @@ class Books:
                     fine = 15 - abs(d1.day - d2.day)
                     if fine < 0:
                         money = abs(fine)
-
-        print(f"You have {money} Euro fine !!! :( please pay before returning {book}")
+        if money == 0:
+            print(f"You have {money} Euro fine !!! for the book {book}")
+        else:
+            print(f"You have {money} Euro fine !!! :( please pay before returning {book}")
 
     def searchByName(self, book_name):
         return [book[0] == book_name for book in self.books]

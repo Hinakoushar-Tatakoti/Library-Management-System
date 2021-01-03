@@ -1,7 +1,8 @@
 from Books import *
 
+
 class User:
-    def __init__(self,username):
+    def __init__(self, username):
         self._username = username
 
     def actions(self):
@@ -44,6 +45,4 @@ class User:
 
                 elif user_choice == 5:
                     book = input("please Enter the name of the book having fine :")
-                    b1.check_fine(self._username,book)
-
-
+                    b1.check_fine(self._username, book)

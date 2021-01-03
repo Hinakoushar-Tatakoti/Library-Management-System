@@ -1,4 +1,5 @@
 from User import *
+import re
 
 
 class Login:
@@ -40,6 +41,26 @@ class Register:
             f.write(self.username + "," + self.password + "," + self.email + "," + self.type)
         return True
 
+    def check_validation(self):
+        if not valid_user_check(self.username):
+            raise Exception("Invalid username!!")
+        if not valid_password_check(self.password):
+            raise Exception("Invalid password!!")
+        if not valid_email_check(self.email):
+            raise Exception("Invalid email address!!")
+        if not valid_usertype_check(self.type):
+            raise Exception("Invalid user type!!")
+
+
+user_type = ['student', 'staff', 'admin']
+
+valid_user_check = lambda uname: True if re.match("^[a-zA-Z0-9_]+$", uname) else False
+
+valid_password_check = lambda passwd: True if re.fullmatch(r'[A-Za-z0-9@#$%^&+=]{8,}', passwd) else False
+
+valid_email_check = lambda mail: True if re.fullmatch(r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$', mail) else False
+
+valid_usertype_check = lambda t: True if any(word in t for word in user_type) else False
 
 if __name__ == '__main__':
 
@@ -66,6 +87,7 @@ if __name__ == '__main__':
             email = input("Enter the Email Id:\n")
             user_type = input("Enter the user type:\n")
             register = Register(username, password, email, user_type)
+            register.check_validation()
             res = register.register_user()
             if res:
                 print(f" {username} Successfully Registered in!!! ")
