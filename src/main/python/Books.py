@@ -49,6 +49,22 @@ class Books:
     def searchByName(self, book_name):
         return [book[0] == book_name for book in self.books]
 
+    def add_book(self, book, author, copies, price):
+        with open("../../../database/Books.txt", "a+") as bf:
+            bf.write("\n")
+            bf.write(book + "," + author + "," + copies + "," + "$" + price)
+            print(f"\n{book} successfully added to database")
+
+    def remove_book(self, book, author):
+        with open("../../../database/Books.txt", "r+") as f:
+            new_f = f.readlines()
+            f.seek(0)
+            for line in new_f:
+                if book not in line and author not in line:
+                    f.write(line)
+            f.truncate()
+            print(f"\n{book} successfully deleted from the database")
+
 
 def list_of_books():
     books = []

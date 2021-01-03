@@ -2,10 +2,11 @@ from Books import *
 
 
 class User:
-    def __init__(self, username):
+    def __init__(self, username,access_type):
         self._username = username
+        self._access_type = access_type
 
-    def actions(self):
+    def student_professors_actions(self):
         b1 = Books(self._username)
         while True:
             print("Let's do some actions on the account!!")
@@ -46,3 +47,32 @@ class User:
                 elif user_choice == 5:
                     book = input("please Enter the name of the book having fine :")
                     b1.check_fine(self._username, book)
+
+    def admin_actions(self):
+        b1 = Books(self._username)
+        while True:
+            print("Let's do some actions as admin!!")
+            print("1", "Display a book")
+            print("2", "Add a book")
+            print("3", "Remove a book")
+            print("Press any number for exit")
+            admin_choice = int(input("Enter your choice \n"))
+            if admin_choice == 1:
+                b1.display_books()
+                print("\n")
+
+            elif admin_choice == 2:
+                book_name = input("Enter the name of book : ")
+                author = input("Enter the author name :  ")
+                numbers = input("Enter the number of copies :  ")
+                price = input("Enter the price of the book : ")
+                b1.add_book(book_name, author, numbers, price)
+
+            elif admin_choice == 3:
+                book = input("please Enter the name of the book you want to delete :")
+                author = input("please Enter the Author name :")
+                b1.remove_book(book, author)
+                print("\n")
+
+            else:
+                exit()

@@ -1,20 +1,25 @@
-from User import *
+import User
 import re
 
 
 class Login:
 
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
+    def __init__(self, uname, passwd):
+        self.username = uname
+        self.password = passwd
 
     def user_condition(self, uname, passwd):
         return True if uname == self.username and passwd == self.password else False
 
     def login(self):
-        if self.check_user():
-            print(f" {self.username}  Successfully logged In !!\n")
-            return self.username;
+        access_type = self.check_user()
+        user = User(username, access_type)
+        if access_type == 'admin' :
+            print(f" {self.username}  Successfully logged In as {access_type}!!\n")
+            user.admin_actions()
+        elif access_type == 'staff' or access_type == 'student':
+            print(f" {self.username}  Successfully logged In as {access_type} !!\n")
+            user.student_professors_actions()
         else:
             print(f"login failed for {username} \n")
             exit()
@@ -23,9 +28,10 @@ class Login:
         with open("../../../database/UserData.txt", "r") as f:
             content = f.read().splitlines()
             for line in content:
-                words = line.split(",")
-                if self.user_condition(words[0], words[1]):
-                    return True
+                if len(line) != 0:
+                    words = line.split(",")
+                    if self.user_condition(words[0], words[1]):
+                        return words[3]
 
 
 class Register:
@@ -39,7 +45,7 @@ class Register:
         with open("../../../database/UserData.txt", "a") as f:
             f.write("\n")
             f.write(self.username + "," + self.password + "," + self.email + "," + self.type)
-        return True
+            print(f" {username} Successfully Registered in as {self.type}!!! ")
 
     def check_validation(self):
         if not valid_user_check(self.username):
@@ -58,7 +64,7 @@ valid_user_check = lambda uname: True if re.match("^[a-zA-Z0-9_]+$", uname) else
 
 valid_password_check = lambda passwd: True if re.fullmatch(r'[A-Za-z0-9@#$%^&+=]{8,}', passwd) else False
 
-valid_email_check = lambda mail: True if re.fullmatch(r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$', mail) else False
+valid_email_check = lambda mail: True if re.search(r'[\w.-]+@[\w.-]+.\w+', email) else False
 
 valid_usertype_check = lambda t: True if any(word in t for word in user_type) else False
 
@@ -79,8 +85,6 @@ if __name__ == '__main__':
             password = input("Enter the Password:\n")
             login = Login(username, password)
             login.login()
-            user = User(username)
-            user.actions()
         elif option == 2:
             username = input("Enter the Username:\n")
             password = input("Enter the Password:\n")
@@ -88,12 +92,7 @@ if __name__ == '__main__':
             user_type = input("Enter the user type:\n")
             register = Register(username, password, email, user_type)
             register.check_validation()
-            res = register.register_user()
-            if res:
-                print(f" {username} Successfully Registered in!!! ")
-            else:
-                print(f" {username} Registration failed !! :( ")
-                exit()
+            register.register_user()
         else:
             print("You decided to exit the Library")
             exit()
