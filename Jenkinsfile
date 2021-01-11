@@ -24,21 +24,24 @@ pipeline{
                            }
                         }
                 }
-                stage('Unit Testing'){
-                       steps {
-                           script {
-                                   sh """
-                                    python -m unittest discover -s tests/unit
-                                   """
+                stage('Compile stage'){
+                        steps {
+                           withMaven(maven : 'maven_3.6.3') {
+                               sh 'mvn clean compile'
                            }
                         }
                 }
-                stage('Integration Testing'){
+                stage('Unit Testing'){
                        steps {
-                           script {
-                                   sh """
-                                    python -m unittest discover -s tests/integration
-                                   """
+                           withMaven(maven : 'maven_3_5_0') {
+                               sh 'mvn test'
+                           }
+                        }
+                }
+                stage('Deployment Stage'){
+                       steps {
+                           withMaven(maven : 'maven_3_5_0') {
+                               sh 'mvn deploy'
                            }
                         }
                 }

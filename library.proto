@@ -1,5 +1,0 @@
-package com.beuth.library;
-
-message M {
-  optional int32 a = 1;
-}

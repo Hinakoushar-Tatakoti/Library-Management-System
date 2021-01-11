@@ -1,3 +1,5 @@
-protobuf>=2.5.0
+protobuf==3.14.0
+pybuilder==0.12.10
+pyspark==3.0.1
+six==1.15.0
 setuptools~=49.2.0
-pip~=20.2.3
