@@ -14,5 +14,5 @@ default_task = "publish"
 
 @init
 def set_properties(project):
-    project.set_property("coverage_break_build", False) # default is True
+    project.set_property("coverage_break_build", True) # default is True
 

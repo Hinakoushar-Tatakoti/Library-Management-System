@@ -1,5 +1,7 @@
 import datetime
 
+issue_book_path = "../../../database/IssuedBook.txt"
+books_path = "../../../database/Books.txt"
 
 class Books:
     def __init__(self, uname):
@@ -17,7 +19,7 @@ class Books:
         if found:
             issued_date = datetime.datetime.today()
             return_date = datetime.datetime.today() + datetime.timedelta(days=15)
-            with open("../../../database/IssuedBook.txt", "a+") as f:
+            with open(issue_book_path, "a+") as f:
                 f.write(self._username + "," + book_name + "," + str(issued_date) + "," + str(return_date))
                 f.write("\n")
             # updateBooks(book_name)
@@ -29,7 +31,7 @@ class Books:
 
     def check_fine(self, username, book):
         money = 0
-        with open("../../../database/IssuedBook.txt", "r") as f:
+        with open(issue_book_path, "r") as f:
             book_list = f.readlines()
             for b in book_list:
                 con = b.split(",")
@@ -46,17 +48,17 @@ class Books:
         else:
             print(f"You have {money} Euro fine !!! :( please pay before returning {book}")
 
-    def searchByName(self, book_name):
+    def search_by_name(self, book_name):
         return [book[0] == book_name for book in self.books]
 
     def add_book(self, book, author, copies, price):
-        with open("../../../database/Books.txt", "a+") as bf:
+        with open(books_path, "a+") as bf:
             bf.write("\n")
             bf.write(book + "," + author + "," + copies + "," + "$" + price)
             print(f"\n{book} successfully added to database")
 
     def remove_book(self, book, author):
-        with open("../../../database/Books.txt", "r+") as f:
+        with open(books_path, "r+") as f:
             new_f = f.readlines()
             f.seek(0)
             for line in new_f:
@@ -68,7 +70,7 @@ class Books:
 
 def list_of_books():
     books = []
-    with open("../../../database/Books.txt", "r") as bf:
+    with open(books_path, "r") as bf:
         book_list = bf.readlines()
         [books.append(load(i)) for i in book_list]
         return books
