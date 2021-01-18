@@ -1,5 +1,5 @@
-from src.main.python.User import *
-from src.main.python.Errors import *
+from src.main.python.User import User
+from src.main.python.Errors import InvalidUserException, InvalidPasswordException, InvalidEmailException, InvalidTypeException
 
 user_file_path = "../../../database/UserData.txt"
 

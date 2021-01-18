@@ -1,6 +1,7 @@
 from unittest import TestCase
 
-from src.main.python.Errors import InvalidPasswordException, InvalidEmailException, InvalidTypeException
+from src.main.python.Errors import InvalidPasswordException, InvalidEmailException, InvalidTypeException, \
+    InvalidUserException
 from src.main.python.Library import Register, validate_user, validate_password, validate_email, validate_type
 from src.main.python.Library import Login
 from src.main.python.Library import Start
@@ -34,25 +35,25 @@ class TestValidations(TestCase):
     def test_validate_user(self):
         try:
             self.assertTrue(validate_user("hina"))
-        except:
-            self.assertRaises(InvalidPasswordException)
+        except InvalidUserException:
+            self.assertRaises(InvalidUserException)
 
     def test_validate_password(self):
         try:
             self.assertTrue(validate_password("fgh"))
-        except:
+        except InvalidPasswordException:
             self.assertRaises(InvalidPasswordException)
 
     def test_validate_email(self):
         try:
             self.assertTrue(validate_email("fgh234"))
-        except:
+        except InvalidEmailException:
             self.assertRaises(InvalidEmailException)
 
     def test_validate_type(self):
         try:
             self.assertTrue(validate_type("user"))
-        except:
+        except InvalidTypeException:
             self.assertRaises(InvalidTypeException)
 
 
@@ -64,5 +65,5 @@ class Test(TestCase):
     def test_start(self):
         try:
             self.assertIsNone(self.start.actions())
-        except:
+        except SystemExit:
             self.assertRaises(SystemExit)

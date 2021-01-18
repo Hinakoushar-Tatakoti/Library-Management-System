@@ -6,16 +6,16 @@ books_path = "../../../database/Books.txt"
 class Books:
     def __init__(self, uname):
         """ Fetching all the book data"""
-        self.books = list_of_books()
+        self.bk = list_of_books()
         self._username = uname
 
     def display_books(self):
         print("The books are present at the Beuth University Library")
-        for book in self.books:
+        for book in self.bk:
             print(book)
 
     def borrow_book(self, book_name):
-        found = [book[0] == book_name for book in self.books]
+        found = [book[0] == book_name for book in self.bk]
         if found:
             issued_date = datetime.datetime.today()
             return_date = datetime.datetime.today() + datetime.timedelta(days=15)
@@ -49,7 +49,7 @@ class Books:
             print(f"You have {money} Euro fine !!! :( please pay before returning {book}")
 
     def search_by_name(self, book_name):
-        return [book[0] == book_name for book in self.books]
+        return [book[0] == book_name for book in self.bk]
 
     def add_book(self, book, author, copies, price):
         with open(books_path, "a+") as bf:
