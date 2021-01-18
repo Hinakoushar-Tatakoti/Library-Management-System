@@ -22,31 +22,34 @@ class User:
                 exit()
             else:
                 user_choice = int(user_choice)
-                if user_choice == 1:
-                    b1.display_books()
-                    print("\n")
+                self.user_decisions(b1, user_choice)
 
-                elif user_choice == 2:
-                    book_name = input("Enter the name of book: ")
-                    if b1.searchByName(book_name):
-                        print(f"\n The Book {book_name} is found !! \n")
-                    else:
-                        print(f"\nThe Book {book_name} your searching is not found !! give it another short\n")
+    def user_decisions(self, b1, user_choice):
+        if user_choice == 1:
+            b1.display_books()
+            print("\n")
 
-                elif user_choice == 3:
-                    book = input("please Enter the name of the book you want to borrow :")
-                    b1.borrow_book(book)
-                    print("\n")
+        elif user_choice == 2:
+            book_name = input("Enter the name of book: ")
+            if b1.searchByName(book_name):
+                print(f"\n The Book {book_name} is found !! \n")
+            else:
+                print(f"\nThe Book {book_name} your searching is not found !! give it another short\n")
 
-                elif user_choice == 4:
-                    book = input("please Enter the name of the book you want to return :")
-                    user = input("please enter your name:")
-                    b1.return_book(book, user)
-                    print("\n")
+        elif user_choice == 3:
+            book = input("please Enter the name of the book you want to borrow :")
+            b1.borrow_book(book)
+            print("\n")
 
-                elif user_choice == 5:
-                    book = input("please Enter the name of the book having fine :")
-                    b1.check_fine(self._username, book)
+        elif user_choice == 4:
+            book = input("please Enter the name of the book you want to return :")
+            user = input("please enter your name:")
+            b1.return_book(book, user)
+            print("\n")
+
+        elif user_choice == 5:
+            book = input("please Enter the name of the book having fine :")
+            b1.check_fine(self._username, book)
 
     def admin_actions(self):
         b1 = Books(self._username)
