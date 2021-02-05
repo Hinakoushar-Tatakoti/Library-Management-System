@@ -10,7 +10,7 @@ Data science 1st semester
 
 #### Contents
 1) UML Diagrams.
-      a) Use case Diagram[a link](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/tree/main/images/Use Case.png)
+      a) [Use case Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/tree/main/images/Use_Case.png)
 2) DDD Of LMS
 3) Sonarcube Metrics.
 4) Clean Code Development(5 points  + 10 points of cheat sheet)
