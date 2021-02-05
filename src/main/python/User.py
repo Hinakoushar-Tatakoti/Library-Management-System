@@ -31,7 +31,7 @@ class User:
 
         elif user_choice == 2:
             book_name = input("Enter the name of book: ")
-            if b1.searchByName(book_name):
+            if b1.search_by_name(book_name):
                 print(f"\n The Book {book_name} is found !! \n")
             else:
                 print(f"\nThe Book {book_name} your searching is not found !! give it another short\n")
