@@ -13,9 +13,9 @@ Data science 1st semester
 
       a) Use case digram![Use case Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Use_case.png)
       
-      b) [Activity Diagram]()
+      b) Activity Diagram [Activity Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Activity_Diagram.png)
       
-      c) [Sequence Diagram]()
+      c) Class Diagram[Class Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Class_Diagram.png)
 2) DDD Of LMS
 3) Sonarcube Metrics.
 4) Clean Code Development(5 points  + 10 points of cheat sheet)
