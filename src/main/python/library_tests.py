@@ -1,9 +1,7 @@
 from unittest import TestCase
 import unittest
 
-from Library import Register, validate_user, validate_password, validate_email, validate_type
-from Library import Login
-from Library import Start
+from src.main.python.Library import Register, validate_user, validate_password, validate_email, validate_type, Login, Start
 
 
 class TestRegister(TestCase):
