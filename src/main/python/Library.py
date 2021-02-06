@@ -97,7 +97,7 @@ def validate_type(user_ty):
 
 
 class Start:
-    def actions(self):
+    def actions():
         while True:
             print("###################################\n")
             print("   Welcome to Beuth University of Applied Science Library   ")

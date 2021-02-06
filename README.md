@@ -11,7 +11,7 @@ Data science 1st semester
 #### Contents
 1) UML Diagrams.
 
-      a) Use case digram![Use case Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Use_case.png)
+      a) Use case Diagram![Use case Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Use_case.png)
       
       b) Activity Diagram![Activity Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Activity_Diagram.png)
       
@@ -19,9 +19,14 @@ Data science 1st semester
 2) DDD Of LMS
 3) Sonarcube Metrics.
 4) Clean Code Development(5 points  + 10 points of cheat sheet)
-5) Build Management using Pybuilder
-6) Unit-Tests  using uinitest
+5) Build Management using Pybuilder.
+6) Unit-Tests using uinitest.
 7) Continuous Delivery Travis-CI
-8) Pycharm IDE shortcut commands.
+8) Pycharm IDE shortcut keys which i really liked to use or used.
+
+   * ctrl+shft+k to push the code git
+   * ctrl+E to open recently opened files from the list
+   * ctrl+/ add or remove line or block comment
+
 9) DSL snippet.
-10 Functional Programming used.
+10) Functional Programming used.
