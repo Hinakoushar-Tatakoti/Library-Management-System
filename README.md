@@ -20,7 +20,13 @@ Data science 1st semester
 3) Sonarcube Metrics.
 4) Clean Code Development(5 points  + 10 points of cheat sheet)
 5) Build Management using Pybuilder.
+
+    ![PyBuilder](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Build_PyBuilder.PNG)
+
 6) Unit-Tests using uinitest.
+
+    ![PyBuilder](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Unittest.PNG)
+    
 7) Continuous Delivery Travis-CI
 8) Pycharm IDE shortcut keys which i really liked to use or used.
 
