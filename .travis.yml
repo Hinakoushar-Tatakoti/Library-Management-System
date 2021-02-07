@@ -4,7 +4,7 @@ python:
 install:
 - pip install -r requirements.txt
 script:
- - python src/main/python/test_users.py
+ - python src/unittest/python/users_tests.py
 notifications:
   email:
     - hinakoushar.tatakot@outlook.com
