@@ -1,5 +1,5 @@
-from User import User
-from Errors import InvalidUserException, InvalidPasswordException, InvalidEmailException, InvalidTypeException
+from src.main.python.lib_users import User
+from src.main.python.lib_errors import InvalidUserException, InvalidPasswordException, InvalidEmailException, InvalidTypeException
 import re
 import os
 

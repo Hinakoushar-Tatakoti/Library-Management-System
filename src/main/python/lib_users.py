@@ -1,4 +1,4 @@
-from Books import Books
+from src.main.python.lib_books import Books
 
 
 class User:
