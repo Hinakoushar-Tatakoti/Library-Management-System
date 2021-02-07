@@ -5,8 +5,6 @@ install:
 - pip install -r requirements.txt
 script:
  - python src/unittest/python/users_tests.py
- - python src/unittest/python/library_tests.py
- - python src/unittest/python/books_tests.py
 notifications:
   email:
     - hinakoushar.tatakot@outlook.com
