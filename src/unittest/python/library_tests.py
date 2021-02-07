@@ -1,9 +1,7 @@
 from unittest import TestCase
 import unittest
 
-from Library import Register, validate_user, validate_password, validate_email, validate_type
-from Library import Login
-from Library import Start
+from src.main.python.library import Register, validate_user, validate_password, validate_email, validate_type, Login
 
 
 class TestRegister(TestCase):
@@ -16,18 +14,6 @@ class TestRegister(TestCase):
         self.assertEqual(self.reg.password, 'hina1234')
         self.assertEqual(self.reg.email, 'hina1234@gmail.com')
         self.assertEqual(self.reg.type, 'admin')
-
-
-class Test(TestCase):
-
-    def setUp(self):
-        self.start = Start()
-
-    def test_start(self):
-        try:
-            self.assertIsNone(self.start.actions())
-        except EOFError:
-            self.assertRaises(EOFError)
 
 
 class TestValidations(TestCase):

@@ -1,13 +1,14 @@
-import Books
+from src.main.python.lib_books import Books
 
 
 class User:
     def __init__(self, username,access_type):
         self._username = username
         self._access_type = access_type
+        self.b1 = Books(self._username)
+
 
     def student_professors_actions(self):
-        b1 = Books(self._username)
         while True:
             print("Let's do some actions on the account!!")
             print("1", "display_books")
@@ -22,7 +23,7 @@ class User:
                 exit()
             else:
                 user_choice = int(user_choice)
-                self.user_decisions(b1, user_choice)
+                self.user_decisions(self.b1, user_choice)
 
     def user_decisions(self, b1, user_choice):
         if user_choice == 1:
@@ -52,7 +53,6 @@ class User:
             b1.check_fine(self._username, book)
 
     def admin_actions(self):
-        b1 = Books(self._username)
         while True:
             print("Let's do some actions as admin!!")
             print("1", "Display a book")
@@ -61,7 +61,7 @@ class User:
             print("Press any number for exit")
             admin_choice = int(input("Enter your choice \n"))
             if admin_choice == 1:
-                b1.display_books()
+                self.b1.display_books()
                 print("\n")
 
             elif admin_choice == 2:
@@ -69,12 +69,12 @@ class User:
                 author = input("Enter the author name :  ")
                 numbers = input("Enter the number of copies :  ")
                 price = input("Enter the price of the book : ")
-                b1.add_book(book_name, author, numbers, price)
+                self.b1.add_book(book_name, author, numbers, price)
 
             elif admin_choice == 3:
                 book = input("please Enter the name of the book you want to delete :")
                 author = input("please Enter the Author name :")
-                b1.remove_book(book, author)
+                self.b1.remove_book(book, author)
                 print("\n")
 
             else:
