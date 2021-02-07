@@ -1,9 +1,10 @@
 from User import User
 from Errors import InvalidUserException, InvalidPasswordException, InvalidEmailException, InvalidTypeException
 import re
+import os
 
-user_file_path = "../../../database/UserData.txt"
-
+directory = os.path.dirname(__file__)
+user_file_path = os.path.join(directory, '/Library-Management-System/src/database/UserData.txt')
 
 class Login:
 
@@ -96,41 +97,38 @@ def validate_type(user_ty):
         exit()
 
 
-class Start:
-    def actions(self):
-        while True:
-            print("###################################\n")
-            print("   Welcome to Beuth University of Applied Science Library   ")
-            print("-------------------------------------------------------------------\n")
-            print(""" ======LIBRARY MENU=======
-                                             1. Login
-                                             2. Register
-                                             3. Exit            """)
+def actions():
+    while True:
+        print("###################################\n")
+        print("   Welcome to Beuth University of Applied Science Library   ")
+        print("-------------------------------------------------------------------\n")
+        print(""" ======LIBRARY MENU=======
+                                                 1. Login
+                                                 2. Register
+                                                 3. Exit            """)
 
-            option = int(input("Enter the choice 1 or 2 or 3:\n"))
-            if option == 1:
-                username = input("Enter the Username:\n")
-                password = input("Enter the Password:\n")
-                login = Login(username, password)
-                login.login()
-            elif option == 2:
-                print("You have selected 2nd option to Register to Beuth university Library")
-                print("Please enter valid username, password, email and usertype[admin, student, staff]")
-                username = input("Enter the Username:\n")
-                validate_user(username)
-                password = input("Enter the Password:\n")
-                validate_password(password)
-                email = input("Enter the Email Id:\n")
-                validate_email(email)
-                user_type = input("Enter the user type:\n")
-                validate_type(user_type)
-                register = Register(username, password, email, user_type)
-                register.register_user()
-            else:
-                print("You decided to exit the Library")
-                exit()
+        option = int(input("Enter the choice 1 or 2 or 3:\n"))
+        if option == 1:
+            username = input("Enter the Username:\n")
+            password = input("Enter the Password:\n")
+            login = Login(username, password)
+            login.login()
+        elif option == 2:
+            print("You have selected 2nd option to Register to Beuth university Library")
+            print("Please enter valid username, password, email and usertype[admin, student, staff]")
+            username = input("Enter the Username:\n")
+            validate_user(username)
+            password = input("Enter the Password:\n")
+            validate_password(password)
+            email = input("Enter the Email Id:\n")
+            validate_email(email)
+            user_type = input("Enter the user type:\n")
+            validate_type(user_type)
+            register = Register(username, password, email, user_type)
+            register.register_user()
+        else:
+            print("You decided to exit the Library")
 
 
 if __name__ == '__main__':
-    st = Start
-    st.actions()
+    actions()

@@ -1,7 +1,11 @@
 import datetime
+import os
 
-issue_book_path = "../../../database/IssuedBook.txt"
-books_path = "../../../database/Books.txt"
+directory = os.path.dirname(__file__)
+
+issue_book_path = os.path.join(directory, '/Library-Management-System/src/database/IssuedBook.txt')
+books_path = os.path.join(directory, '/Library-Management-System/src/database/Books.txt')
+
 
 class Books:
     def __init__(self, uname):
