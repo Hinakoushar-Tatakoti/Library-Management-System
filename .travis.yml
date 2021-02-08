@@ -10,10 +10,10 @@ script:
 notifications:
   email:
     - hinakoushar.tatakot@outlook.com
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $github_token
-  local_dir: build
-  on:
-    repo: Hinakoushar-Tatakoti/Library-Management-System
+#deploy:
+#  provider: pages
+#  skip_cleanup: true
+#  github_token: $github_token
+#  local_dir: build
+#  on:
+#    repo: Hinakoushar-Tatakoti/Library-Management-System
