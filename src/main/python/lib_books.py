@@ -37,13 +37,13 @@ class Books:
         money = 0
         with open(issued_book_path, "r") as f:
             book_list = f.readlines()
-            for book in book_list:
-                issued_book_data = book.split(",")
-                print(issued_book_data)
-                if issued_book_data[0] == username and issued_book_data[1] == book:
-                    issued_book_data[3] = issued_book_data[3].strip('\n')
-                    d1 = datetime.datetime.strptime(issued_book_data[2], '%Y-%m-%d %H:%M:%S.%f')
-                    d2 = datetime.datetime.strptime(issued_book_data[3], '%Y-%m-%d %H:%M:%S.%f')
+            for b in book_list:
+                con = b.split(",")
+                print(con)
+                if con[0] == username and con[1] == book:
+                    con[3] = con[3].strip('\n')
+                    d1 = datetime.datetime.strptime(con[2], '%Y-%m-%d %H:%M:%S.%f')
+                    d2 = datetime.datetime.strptime(con[3], '%Y-%m-%d %H:%M:%S.%f')
                     fine = 15 - abs(d1.day - d2.day)
                     if fine < 0:
                         money = abs(fine)
@@ -76,7 +76,7 @@ def list_of_books():
     books = []
     with open(books_path, "r") as bf:
         book_list = bf.readlines()
-        [books.append(split_books_by_newline(i)) for i in book_list]
+        [books.append(split_books_by_newline(book)) for book in book_list]
         return books
 
 
