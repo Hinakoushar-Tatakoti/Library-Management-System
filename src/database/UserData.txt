@@ -1,1 +1,2 @@
-Hina,hina1234,hina.tatakoti@gmail.com,admin
+Hina,hina@1234,hina@type.com,Admin
+Hina,aaa@1234,hina@gmail.com,Student

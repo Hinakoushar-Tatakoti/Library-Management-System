@@ -1,10 +1,12 @@
-from src.main.python.lib_users import User
-from src.main.python.lib_errors import InvalidUserException, InvalidPasswordException, InvalidEmailException, InvalidTypeException
 import re
 import os
+from src.main.python.lib_users import User
+from src.main.python.lib_errors import InvalidUserException, InvalidPasswordException, InvalidEmailException, \
+    InvalidTypeException
 
 directory = os.path.dirname(__file__)
 user_file_path = os.path.join(directory, '/Library-Management-System/src/database/UserData.txt')
+
 
 class Login:
 
@@ -13,17 +15,17 @@ class Login:
         self.password = passwd
 
     def user_condition(self, uname, passwd):
-        return True if uname == self.username and passwd == self.password else False
+        return True if uname.lower() == self.username and passwd.lower() == self.password else False
 
     def login(self):
         access_type = self.check_user()
         user = User(self.username, access_type)
-        if access_type == 'admin':
+        if access_type == 'Admin':
             print(f" {self.username}  Successfully logged In as {access_type}!!\n")
             user.admin_actions()
-        elif access_type == 'staff' or access_type == 'student':
+        elif access_type == 'Staff' or access_type == 'Student':
             print(f" {self.username}  Successfully logged In as {access_type} !!\n")
-            user.student_professors_actions()
+            user.student_staff_actions()
         else:
             print(f"login failed for {self.username} \n")
             exit()
@@ -34,7 +36,8 @@ class Login:
             for line in content:
                 if len(line) != 0:
                     words = line.split(",")
-                    if self.user_condition(words[0], words[1]):
+                    user_username_pass_check = self.user_condition
+                    if user_username_pass_check(words[0], words[1]):
                         return words[3]
 
 
@@ -48,7 +51,8 @@ class Register:
     def register_user(self):
         with open(user_file_path, "a") as f:
             f.write("\n")
-            f.write(self.username + "," + self.password + "," + self.email + "," + self.type)
+            caps_username, caps_type = map(lambda x: x.capitalize(), [self.username, self.type])
+            f.write(caps_username + "," + self.password + "," + self.email + "," + caps_type)
             print(f" {self.username} Successfully Registered in as {self.type}!!! ")
 
 
@@ -58,39 +62,40 @@ valid_password_check = lambda passwd: True if re.fullmatch(r'[A-Za-z0-9@#$%^&+=]
 
 valid_email_check = lambda mail: True if re.search(r'[\w.-]+@[\w.-]+.\w+', mail) else False
 
-valid_usertype_check = lambda t: True if any(word in t for word in ['student', 'staff', 'admin']) else False
+valid_usertype_check = lambda type_of_user: True if any(
+    word in type_of_user for word in ['student', 'staff', 'admin']) else False
 
 
-def validate_user(u_name):
+def validate_user(reg_func_user_check, u_name):
     try:
-        if not valid_user_check(u_name):
-            raise InvalidUserException
+        if not reg_func_user_check(u_name):
+            raise InvalidUserException("Invalid user")
     except InvalidUserException:
         print(f"You entered invalid username {str(u_name)}")
         exit()
 
 
-def validate_password(password):
+def validate_password(reg_func_password_check, password):
     try:
-        if not valid_password_check(password):
+        if not reg_func_password_check(password):
             raise InvalidPasswordException("Invalid password")
     except InvalidPasswordException:
         print(f"You entered invalid password {str(password)} and it should contain at least 8 chars")
         exit()
 
 
-def validate_email(email):
+def validate_email(reg_func_email_check, email):
     try:
-        if not valid_email_check(email):
+        if not reg_func_email_check(email):
             raise InvalidEmailException("Invalid email")
     except InvalidEmailException:
         print(f"You entered invalid email format {str(email)}")
         exit()
 
 
-def validate_type(user_ty):
+def validate_type(reg_func_user_type_check, user_ty):
     try:
-        if not valid_usertype_check(user_ty):
+        if not reg_func_user_type_check(user_ty):
             raise InvalidTypeException("Invalid usertype")
     except InvalidTypeException:
         print(f"Please enter valid user type {str(user_ty)}")
@@ -115,15 +120,15 @@ def actions():
             login.login()
         elif option == 2:
             print("You have selected 2nd option to Register to Beuth university Library")
-            print("Please enter valid username, password, email and usertype[admin, student, staff]")
+            print("Please enter valid username, password, email and usertype[Admin, Student,Staff]")
             username = input("Enter the Username:\n")
-            validate_user(username)
+            validate_user(valid_user_check, username)
             password = input("Enter the Password:\n")
-            validate_password(password)
+            validate_password(valid_password_check, password)
             email = input("Enter the Email Id:\n")
-            validate_email(email)
+            validate_email(valid_email_check, email)
             user_type = input("Enter the user type:\n")
-            validate_type(user_type)
+            validate_type(valid_usertype_check, user_type)
             register = Register(username, password, email, user_type)
             register.register_user()
         else:

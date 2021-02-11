@@ -3,17 +3,17 @@ python:
 - '3.8'
 install:
 - pip install -r requirements.txt
+
+addons:
+  sonarcloud:
+    organization: "hinakoushar-tatakoti"
+    token: ${SONAR_TOKEN}
+
 script:
  - python -m pytest -v src/unittest/python/books_tests.py
  - python -m pytest -v src/unittest/python/library_tests.py
+ - sonar-scanner -X -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.projectKey=Hinakoushar-Tatakoti_Library-Management-System
 
 notifications:
   email:
     - hinakoushar.tatakot@outlook.com
-#deploy:
-#  provider: pages
-#  skip_cleanup: true
-#  github_token: $github_token
-#  local_dir: build
-#  on:
-#    repo: Hinakoushar-Tatakoti/Library-Management-System

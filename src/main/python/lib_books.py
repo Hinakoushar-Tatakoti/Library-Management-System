@@ -3,7 +3,7 @@ import os
 
 directory = os.path.dirname(__file__)
 
-issue_book_path = os.path.join(directory, '/Library-Management-System/src/database/IssuedBook.txt')
+issued_book_path = os.path.join(directory, '/Library-Management-System/src/database/IssuedBook.txt')
 books_path = os.path.join(directory, '/Library-Management-System/src/database/Books.txt')
 
 
@@ -23,7 +23,7 @@ class Books:
         if found:
             issued_date = datetime.datetime.today()
             return_date = datetime.datetime.today() + datetime.timedelta(days=15)
-            with open(issue_book_path, "a+") as f:
+            with open(issued_book_path, "a+") as f:
                 f.write(self._username + "," + book_name + "," + str(issued_date) + "," + str(return_date))
                 f.write("\n")
             # updateBooks(book_name)
@@ -35,7 +35,7 @@ class Books:
 
     def check_fine(self, username, book):
         money = 0
-        with open(issue_book_path, "r") as f:
+        with open(issued_book_path, "r") as f:
             book_list = f.readlines()
             for b in book_list:
                 con = b.split(",")
@@ -52,7 +52,7 @@ class Books:
         else:
             print(f"You have {money} Euro fine !!! :( please pay before returning {book}")
 
-    def search_by_name(self, book_name):
+    def search_by_book_name(self, book_name):
         return [book[0] == book_name for book in self.bk]
 
     def add_book(self, book, author, copies, price):
@@ -76,8 +76,8 @@ def list_of_books():
     books = []
     with open(books_path, "r") as bf:
         book_list = bf.readlines()
-        [books.append(load(i)) for i in book_list]
+        [books.append(split_books_by_newline(book)) for book in book_list]
         return books
 
 
-load = lambda x: x.replace('\n', '').split(',')
+split_books_by_newline = lambda x: x.replace('\n', '').split(',')
