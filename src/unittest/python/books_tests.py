@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from src.main.python.lib_books import Books
 
@@ -10,3 +11,7 @@ class TestBooks(TestCase):
             self.bk.display_books()
         except FileNotFoundError:
             self.assertRaises(FileNotFoundError)
+
+
+if __name__ == '__main__':
+    unittest.main()

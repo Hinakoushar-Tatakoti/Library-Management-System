@@ -1,4 +1,4 @@
-from src.main.python.lib_books import Books
+from src.main.python.lib_books import Books, calculate_fine
 
 
 class User:
@@ -44,12 +44,12 @@ class User:
         elif user_choice == 4:
             book = input("please Enter the name of the book you want to return :")
             user = input("please enter your name:")
-            b1.return_book(book, user)
+            b1.return_book(book, user.upper())
             print("\n")
 
         elif user_choice == 5:
             book = input("please Enter the name of the book having fine :")
-            b1.check_fine(self._username, book)
+            calculate_fine(self._username, book)
 
     def admin_actions(self):
         while True:

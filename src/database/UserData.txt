@@ -1,2 +1,3 @@
-Hina,hina@1234,hina@type.com,Admin
-Hina,aaa@1234,hina@gmail.com,Student
+HINA,aaa@1234,hina@1234,ADMIN
+ROSE,bbb@1234,rose@gmail.com,STUDENT
+SALVS,ccc@1234,salvatorlouis@gmail.com,STAFF
