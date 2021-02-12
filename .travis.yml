@@ -10,9 +10,8 @@ addons:
     token: ${SONAR_TOKEN}
 
 script:
-# - python -m pytest -v src/unittest/python/books_tests.py
-# - python -m pytest -v src/unittest/python/library_tests.py
- - pyb
+ - python -m pytest -v src/unittest/python/books_tests.py
+ - python -m pytest -v src/unittest/python/library_tests.py
  - sonar-scanner
 
 notifications:
