@@ -42,13 +42,24 @@ SonarCloud is the online service to catch Bugs,Security Vulnerabilities,Code sme
 
 [Sonarcloud-URL](https://sonarcloud.io/dashboard?id=Hinakoushar-Tatakoti_Library-Management-System)
 
-[SonarCloud-Metrics1](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics1.PNG)
+**1. Reliability Metrics:**
 
-[SonarCloud-Metrics2](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics2.PNG)
+Reliability metric analyze new bugs(number of news bugs issues in source code.
 
-[SonarCloud-Metrics3](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics3.PNG)
+![Reliability](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics1.PNG)
 
-[SonarCloud-Metrics4](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics4.PNG)
+**2. Security Metrics:**
+
+Security metrics find vulnerabilities and new vulnerabilities in source code.
+
+![Security](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics2.PNG)
+
+**3. Duplication Metrics:**
+
+There are no duplication(line duplication, files duplication, blocks duplication) in the LMS project code.
+
+![Duplications](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics3.PNG)
+
 
 **4) Clean Code Development(5 points  + 10 points of cheat sheet)**
 
