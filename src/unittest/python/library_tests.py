@@ -78,14 +78,22 @@ class TestLogin(TestCase):
         self.assertFalse(self.log.user_condition('hina', 'hina8765'))
 
     def test_check_admin_login(self):
-        self.assertEquals("None", self.log.check_user(), "ADMIN")
+        try:
+            self.assertEquals("None", self.log.check_user(), "ADMIN")
+        except FileNotFoundError:
+            self.assertRaises(FileNotFoundError)
 
     def test_check_student_login(self):
-        self.assertEquals("STUDENT", self.log1.check_user(), "STUDENT")
+        try:
+            self.assertEquals("STUDENT", self.log1.check_user(), "STUDENT")
+        except FileNotFoundError:
+            self.assertRaises(FileNotFoundError)
 
     def test_check_staff_login(self):
-        self.assertEquals("STAFF", self.log2.check_user(), "STAFF")
-
+        try:
+            self.assertEquals("STAFF", self.log2.check_user(), "STAFF")
+        except FileNotFoundError:
+            self.assertRaises(FileNotFoundError)
 
 
 if __name__ == '__main__':
