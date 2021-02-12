@@ -31,54 +31,62 @@ valid_email_check = lambda mail: True if re.search(r'[\w.-]+@[\w.-]+.\w+', mail)
 valid_usertype_check = lambda type_of_user: True if any(
     word in type_of_user for word in ['student', 'staff', 'admin']) else False
 
+
 class TestValidations(TestCase):
     def test_validate_user(self):
         try:
-            self.assertIsNone(validate_user(valid_user_check,"hina"))
+            self.assertIsNone(validate_user(valid_user_check, "hina"))
         except SystemExit:
             self.assertRaises(SystemExit)
 
     def test_validate_password(self):
         try:
-            self.assertTrue(validate_password(valid_password_check,"fgh"))
+            self.assertTrue(validate_password(valid_password_check, "fgh"))
         except SystemExit:
             self.assertRaises(SystemExit)
 
     def test_validate_email(self):
         try:
-            self.assertTrue(validate_email(valid_email_check,"fgh234"))
+            self.assertTrue(validate_email(valid_email_check, "fgh234"))
         except SystemExit:
             self.assertRaises(SystemExit)
 
     def test_validate_type(self):
         try:
-            self.assertTrue(validate_type(valid_usertype_check,"user"))
+            self.assertTrue(validate_type(valid_usertype_check, "user"))
         except SystemExit:
             self.assertRaises(SystemExit)
 
     def test_user_admin(self):
-        self.assertIsNone(validate_user(valid_user_check,"Hina"))
+        self.assertIsNone(validate_user(valid_user_check, "Hina"))
 
     def test_password_admin(self):
-        self.assertIsNone(validate_user(valid_password_check,"hina1234"))
+        self.assertIsNone(validate_user(valid_password_check, "hina1234"))
 
     def test_email_admin(self):
-        self.assertIsNone(validate_user(valid_email_check,"hina@gmail.com"))
+        self.assertIsNone(validate_user(valid_email_check, "hina@gmail.com"))
 
 
 class TestLogin(TestCase):
     def setUp(self):
         self.log = Login('hina', 'hina1234')
+        self.log1 = Login('ROSE', 'bbb@1234')
+        self.log2 = Login('SALVS', 'ccc@1234')
 
     def test_user_condition(self):
         self.assertTrue(self.log.user_condition('hina', 'hina1234'))
         self.assertFalse(self.log.user_condition('hina', 'hina8765'))
 
-    def test_check_user(self):
-        try:
-            self.assertIsNone(self.log.check_user(), "Admin")
-        except FileNotFoundError:
-            self.assertRaises(FileNotFoundError)
+    def test_check_admin_login(self):
+        self.assertEquals("None", self.log.check_user(), "ADMIN")
+
+    def test_check_student_login(self):
+        self.assertEquals("STUDENT", self.log1.check_user(), "STUDENT")
+
+    def test_check_staff_login(self):
+        self.assertEquals("STAFF", self.log2.check_user(), "STAFF")
+
+
 
 if __name__ == '__main__':
-	unittest.main()
+    unittest.main()

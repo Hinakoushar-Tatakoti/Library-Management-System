@@ -9,13 +9,12 @@ books_path = os.path.join(directory, '/Library-Management-System/src/database/Bo
 
 class Books:
     def __init__(self, uname):
-        """ Fetching all the book data"""
         self.bk = list_of_books()
         self._username = uname
 
     def display_books(self):
         print("The books are present at the Beuth University Library")
-        for book in self.bk:
+        for book in list_of_books():
             print(book)
 
     def borrow_book(self, book_name):
@@ -31,43 +30,28 @@ class Books:
                   f"otherwise 1 EURO/day fine will be charged")
 
     def return_book(self, book_name, username):
-        self.check_fine(username, book_name)
-
-    def check_fine(self, username, book):
-        money = 0
-        with open(issued_book_path, "r") as f:
-            book_list = f.readlines()
-            for b in book_list:
-                con = b.split(",")
-                print(con)
-                if con[0] == username and con[1] == book:
-                    con[3] = con[3].strip('\n')
-                    d1 = datetime.datetime.strptime(con[2], '%Y-%m-%d %H:%M:%S.%f')
-                    d2 = datetime.datetime.strptime(con[3], '%Y-%m-%d %H:%M:%S.%f')
-                    fine = 15 - abs(d1.day - d2.day)
-                    if fine < 0:
-                        money = abs(fine)
-        if money == 0:
-            print(f"You have {money} Euro fine !!! for the book {book}")
-        else:
-            print(f"You have {money} Euro fine !!! :( please pay before returning {book}")
+        calculate_fine(username, book_name)
+        update_issued_book_data(username, book_name)
 
     def search_by_book_name(self, book_name):
-        return [book[0] == book_name for book in self.bk]
+        for book in self.bk:
+            if book_name == book[0]:
+                return True
+        return False
 
     def add_book(self, book, author, copies, price):
         with open(books_path, "a+") as bf:
             bf.write("\n")
-            bf.write(book + "," + author + "," + copies + "," + "$" + price)
+            bf.write(book + "," + author + "," + copies + "," + "€" + price)
             print(f"\n{book} successfully added to database")
 
     def remove_book(self, book, author):
         with open(books_path, "r+") as f:
-            new_f = f.readlines()
+            books = f.readlines()
             f.seek(0)
-            for line in new_f:
-                if book not in line and author not in line:
-                    f.write(line)
+            for b in books:
+                if book not in b and author not in b:
+                    f.write(b)
             f.truncate()
             print(f"\n{book} successfully deleted from the database")
 
@@ -81,3 +65,47 @@ def list_of_books():
 
 
 split_books_by_newline = lambda x: x.replace('\n', '').split(',')
+
+
+def fine_calc_decorator(func):
+    def fine_function_wrapper(user, book):
+        fine = func(user, book)
+        if fine is None or fine == 0:
+            print(f"You have {fine} Euro fine !!! for the book {book}")
+        else:
+            print(f"You have {fine} Euro fine !!! :) please pay before returning {book}")
+
+    return fine_function_wrapper
+
+
+@fine_calc_decorator
+def calculate_fine(user_name, book_name):
+    with open(issued_book_path, "r") as f:
+        book_list = f.readlines()
+        for book in book_list:
+            book_data = book.split(",")
+            if book_data[0] == user_name.upper() and book_data[1] == book_name:
+                book_data[3] = book_data[3].strip('\n')
+                issued_date = datetime.datetime.strptime(book_data[2], '%Y-%m-%d %H:%M:%S.%f')
+                return_date = datetime.datetime.strptime(book_data[3], '%Y-%m-%d %H:%M:%S.%f')
+                fine = 15 - abs(issued_date.day - return_date.day)
+                money = 0
+                if fine < 0:
+                    money = abs(fine)
+                return money
+
+
+def update_issued_book_data(user_name, book_name):
+    with open(issued_book_path, "r+") as f:
+        books = f.readlines()
+        f.seek(0)
+        found = False
+        for issued_book in books:
+            if user_name in issued_book and book_name in issued_book:
+                f.truncate()
+                found = True
+                print(f"\n{book_name} successfully returned to library")
+            else:
+                f.write(issued_book)
+        if not found:
+            print(f"\n Hey!! {user_name} No {book_name} has not been issued to you!!")

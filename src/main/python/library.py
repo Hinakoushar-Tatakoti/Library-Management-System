@@ -15,15 +15,15 @@ class Login:
         self.password = passwd
 
     def user_condition(self, uname, passwd):
-        return True if uname.lower() == self.username and passwd.lower() == self.password else False
+        return True if uname == self.username and passwd == self.password else False
 
     def login(self):
         access_type = self.check_user()
         user = User(self.username, access_type)
-        if access_type == 'Admin':
+        if access_type.upper() == 'ADMIN':
             print(f" {self.username}  Successfully logged In as {access_type}!!\n")
             user.admin_actions()
-        elif access_type == 'Staff' or access_type == 'Student':
+        elif access_type.upper() == 'STAFF' or access_type.upper() == 'STUDENT':
             print(f" {self.username}  Successfully logged In as {access_type} !!\n")
             user.student_staff_actions()
         else:
@@ -39,6 +39,7 @@ class Login:
                     user_username_pass_check = self.user_condition
                     if user_username_pass_check(words[0], words[1]):
                         return words[3]
+        return "None"
 
 
 class Register:
@@ -51,7 +52,7 @@ class Register:
     def register_user(self):
         with open(user_file_path, "a") as f:
             f.write("\n")
-            caps_username, caps_type = map(lambda x: x.capitalize(), [self.username, self.type])
+            caps_username, caps_type = map(lambda x: x.upper(), [self.username, self.type])
             f.write(caps_username + "," + self.password + "," + self.email + "," + caps_type)
             print(f" {self.username} Successfully Registered in as {self.type}!!! ")
 
@@ -63,7 +64,7 @@ valid_password_check = lambda passwd: True if re.fullmatch(r'[A-Za-z0-9@#$%^&+=]
 valid_email_check = lambda mail: True if re.search(r'[\w.-]+@[\w.-]+.\w+', mail) else False
 
 valid_usertype_check = lambda type_of_user: True if any(
-    word in type_of_user for word in ['student', 'staff', 'admin']) else False
+    word in type_of_user for word in ['Student', 'Staff', 'Admin']) else False
 
 
 def validate_user(reg_func_user_check, u_name):
@@ -116,7 +117,7 @@ def actions():
         if option == 1:
             username = input("Enter the Username:\n")
             password = input("Enter the Password:\n")
-            login = Login(username, password)
+            login = Login(username.upper(), password)
             login.login()
         elif option == 2:
             print("You have selected 2nd option to Register to Beuth university Library")
