@@ -86,8 +86,8 @@ def calculate_fine(user_name, book_name):
             book_data = book.split(",")
             if book_data[0] == user_name.upper() and book_data[1] == book_name:
                 book_data[3] = book_data[3].strip('\n')
-                issued_date = datetime.datetime.strptime(book_data[2], '%Y-%m-%d %H:%M:%S.%f')
-                return_date = datetime.datetime.strptime(book_data[3], '%Y-%m-%d %H:%M:%S.%f')
+                issued_date = datetime.datetime.strptime(book_data[2], constants.DATE_FORMAT_FOR_FINE_CALC)
+                return_date = datetime.datetime.strptime(book_data[3], constants.DATE_FORMAT_FOR_FINE_CALC)
                 fine = constants.NUMBER_OF_DAYS - abs(issued_date.day - return_date.day)
                 money = constants.FINE_ZERO
                 if fine < constants.FINE_ZERO:
