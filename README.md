@@ -53,19 +53,19 @@ SonarCloud is the online service to catch Bugs,Security Vulnerabilities,Code sme
 
 Reliability metric analyze new bugs(number of news bugs issues in source code.
 
-[Reliability](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics1.PNG)
+[Reliability](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics_Reliability.JPG)
 
 **2. Security Metrics:**
 
 Security metrics find vulnerabilities and new vulnerabilities in source code.
 
-[Security](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics2.PNG)
+[Security](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_Metrics_Security.JPG)
 
 **3. Duplication Metrics:**
 
 There are no duplication(line duplication, files duplication, blocks duplication) in the LMS project code.
 
-[Duplications](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_metrics3.PNG)
+[Duplications](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Sonar_Metrics_Dupications.JPG)
 
 
 **4) Clean Code Development(5 points  + 10 points of cheat sheet)**
@@ -119,6 +119,8 @@ I have used Travis-CI for CI/CD pipeline,for every push new build is triggered, 
 
 [Travis-CI Pipeline-Link](https://travis-ci.org/github/Hinakoushar-Tatakoti/Library-Management-System)
 
+[Travis-CI-Pipeline](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CI-CD_Travis-CI.PNG)
+
 [Travis-CI-Pipeline-Result](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Travis_ci_1.PNG)
 
 [Travis-CI-Pipeline-Logs](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/task/Travis-CI-logs.txt)
@@ -134,7 +136,7 @@ Previously i worked with jetbrains Intellij already knew shortcut keys which i r
 
  DSL is a programming language or specification language dedicated to a particular problem domain, a particular problem representation technique, and/or a particular solution technique.Popular examples of DSL are SQL, HTML, XML, UML etc. LMS project used "regular expression" as a DSL.
  
- 1. Regular expression:
+ **Regular expression:**
  
 A regular expression is a sequence of character that helps you to match or find other strings or set of strings, using a specialized syntax held in pattern. Regular expression used as a DSL in this project code. Regular expression used to match the valid chars, password strength and email pattern from user inputs.
  
