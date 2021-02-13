@@ -29,12 +29,12 @@ Items involved are 1)Functionalities to be represented as use case 2)Actors 3)Re
 
 ![Activity Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Activity_Diagram.png)
 
+<img src="https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Activity_Diagram.png" width="600" height="500" />
+
 Activity diagram is basically a flowchart to represent the flow from one activity to another activity. The activity can be described as an operation of the system.
 The control flow is drawn from one operation to another. This flow can be sequential, branched, or concurrent. Activity diagrams deal with all type of flow control by using different elements such as fork, join, etc
       
 ![Class Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Class_Diagram.PNG)
-
-<img src="https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Class_Diagram.PNG" width="600" height="500" />
 
  It represents the static view of an application. Class diagram is not only used for visualizing, describing, and documenting different aspects of a system but also for constructing executable code of the software application.
  Class diagram shows a collection of classes, interfaces, associations, collaborations, and constraints. It is also known as a structural diagram.
