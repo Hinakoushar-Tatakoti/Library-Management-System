@@ -6,8 +6,26 @@ Which has different features like authentication,authorization,registartion.Libr
 adding a book, remove a book and display a books. Even students and staff can also login and perform actions like disaplay book, search a book, borrow book,
 return book and pay a fine.
 
+**Handling**
 
-**Advance Software Engineering**
+1. Clone the repository
+
+2. Create a virtual environment
+
+3. Install pybuilder
+
+4. pip install pybuilder
+
+5. Build the project - pyb 
+
+6. Run the project using any IDE as it's console based application.
+
+
+Or 
+
+I have craeted .exe file of library system just click on the library.exe file present inside the /output/library/library.exe and start using the application
+
+### Advance Software Engineering
 
 Hinakoushar Tatakoti
 
