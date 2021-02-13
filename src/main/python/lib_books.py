@@ -1,10 +1,11 @@
 import datetime
 import os
+from src.main.python import constants
 
 directory = os.path.dirname(__file__)
 
 issued_book_path = os.path.join(directory, '/Library-Management-System/src/database/IssuedBook.txt')
-books_path = os.path.join(directory, '/Library-Management-System/src/database/Books.txt')
+books_db_path = os.path.join(directory, '/Library-Management-System/src/database/Books.txt')
 
 
 class Books:
@@ -21,11 +22,10 @@ class Books:
         found = [book[0] == book_name for book in self.bk]
         if found:
             issued_date = datetime.datetime.today()
-            return_date = datetime.datetime.today() + datetime.timedelta(days=15)
+            return_date = datetime.datetime.today() + datetime.timedelta(days=constants.NUMBER_OF_DAYS)
             with open(issued_book_path, "a+") as f:
                 f.write(self._username + "," + book_name + "," + str(issued_date) + "," + str(return_date))
                 f.write("\n")
-            # updateBooks(book_name)
             print(f"You have borrowed {book_name} and you have 15 days to read book. please return book on time "
                   f"otherwise 1 EURO/day fine will be charged")
 
@@ -40,13 +40,13 @@ class Books:
         return False
 
     def add_book(self, book, author, copies, price):
-        with open(books_path, "a+") as bf:
+        with open(books_db_path, "a+") as bf:
             bf.write("\n")
             bf.write(book + "," + author + "," + copies + "," + "€" + price)
             print(f"\n{book} successfully added to database")
 
     def remove_book(self, book, author):
-        with open(books_path, "r+") as f:
+        with open(books_db_path, "r+") as f:
             books = f.readlines()
             f.seek(0)
             for b in books:
@@ -58,7 +58,7 @@ class Books:
 
 def list_of_books():
     books = []
-    with open(books_path, "r") as bf:
+    with open(books_db_path, "r") as bf:
         book_list = bf.readlines()
         [books.append(split_books_by_newline(book)) for book in book_list]
         return books
@@ -70,7 +70,7 @@ split_books_by_newline = lambda x: x.replace('\n', '').split(',')
 def fine_calc_decorator(func):
     def fine_function_wrapper(user, book):
         fine = func(user, book)
-        if fine is None or fine == 0:
+        if fine is None or fine == constants.FINE_ZERO:
             print(f"You have {fine} Euro fine !!! for the book {book}")
         else:
             print(f"You have {fine} Euro fine !!! :) please pay before returning {book}")
@@ -88,9 +88,9 @@ def calculate_fine(user_name, book_name):
                 book_data[3] = book_data[3].strip('\n')
                 issued_date = datetime.datetime.strptime(book_data[2], '%Y-%m-%d %H:%M:%S.%f')
                 return_date = datetime.datetime.strptime(book_data[3], '%Y-%m-%d %H:%M:%S.%f')
-                fine = 15 - abs(issued_date.day - return_date.day)
-                money = 0
-                if fine < 0:
+                fine = constants.NUMBER_OF_DAYS - abs(issued_date.day - return_date.day)
+                money = constants.FINE_ZERO
+                if fine < constants.FINE_ZERO:
                     money = abs(fine)
                 return money
 

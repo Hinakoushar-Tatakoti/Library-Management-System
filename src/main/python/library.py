@@ -3,9 +3,10 @@ import os
 from src.main.python.lib_users import User
 from src.main.python.lib_errors import InvalidUserException, InvalidPasswordException, InvalidEmailException, \
     InvalidTypeException
+from src.main.python import constants
 
 directory = os.path.dirname(__file__)
-user_file_path = os.path.join(directory, '/Library-Management-System/src/database/UserData.txt')
+user_db_path = os.path.join(directory, '/Library-Management-System/src/database/UserData.txt')
 
 
 class Login:
@@ -31,7 +32,7 @@ class Login:
             exit()
 
     def check_user(self):
-        with open(user_file_path, "r") as f:
+        with open(user_db_path, "r") as f:
             content = f.read().splitlines()
             for line in content:
                 if len(line) != 0:
@@ -50,7 +51,7 @@ class Register:
         self.type = type_of_user
 
     def register_user(self):
-        with open(user_file_path, "a") as f:
+        with open(user_db_path, "a") as f:
             f.write("\n")
             caps_username, caps_type = map(lambda x: x.upper(), [self.username, self.type])
             f.write(caps_username + "," + self.password + "," + self.email + "," + caps_type)
@@ -114,12 +115,12 @@ def actions():
                                                  3. Exit            """)
 
         option = int(input("Enter the choice 1 or 2 or 3:\n"))
-        if option == 1:
+        if option == constants.USER_CHOICE_ONE:
             username = input("Enter the Username:\n")
             password = input("Enter the Password:\n")
             login = Login(username.upper(), password)
             login.login()
-        elif option == 2:
+        elif option == constants.USER_CHOICE_TWO:
             print("You have selected 2nd option to Register to Beuth university Library")
             print("Please enter valid username, password, email and usertype[Admin, Student,Staff]")
             username = input("Enter the Username:\n")

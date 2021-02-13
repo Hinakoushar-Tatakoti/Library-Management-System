@@ -1,4 +1,5 @@
 from src.main.python.lib_books import Books, calculate_fine
+from src.main.python import constants
 
 
 class User:
@@ -25,29 +26,29 @@ class User:
                 self.user_decisions(self.b1, student_staff_decision)
 
     def user_decisions(self, b1, user_choice):
-        if user_choice == 1:
+        if user_choice == constants.USER_CHOICE_ONE:
             b1.display_books()
             print("\n")
 
-        elif user_choice == 2:
+        elif user_choice == constants.USER_CHOICE_TWO:
             book_name = input("Enter the name of book: ")
             if b1.search_by_book_name(book_name):
                 print(f"\n The Book {book_name} is found !! \n")
             else:
                 print(f"\nThe Book {book_name} your searching is not found !! give it another short\n")
 
-        elif user_choice == 3:
+        elif user_choice == constants.USER_CHOICE_THREE:
             book = input("please Enter the name of the book you want to borrow :")
             b1.borrow_book(book)
             print("\n")
 
-        elif user_choice == 4:
+        elif user_choice == constants.USER_CHOICE_FOUR:
             book = input("please Enter the name of the book you want to return :")
             user = input("please enter your name:")
             b1.return_book(book, user.upper())
             print("\n")
 
-        elif user_choice == 5:
+        elif user_choice == constants.USER_CHOICE_FIVE:
             book = input("please Enter the name of the book having fine :")
             calculate_fine(self._username, book)
 
@@ -59,18 +60,18 @@ class User:
             print("3", "Remove a book")
             print("Press any number for exit")
             admin_choice = int(input("Enter your choice \n"))
-            if admin_choice == 1:
+            if admin_choice == constants.USER_CHOICE_ONE:
                 self.b1.display_books()
                 print("\n")
 
-            elif admin_choice == 2:
+            elif admin_choice == constants.USER_CHOICE_TWO:
                 book_name = input("Enter the name of book : ")
                 author = input("Enter the author name :  ")
                 numbers = input("Enter the number of copies :  ")
                 price = input("Enter the price of the book : ")
                 self.b1.add_book(book_name, author, numbers, price)
 
-            elif admin_choice == 3:
+            elif admin_choice == constants.USER_CHOICE_THREE:
                 book = input("please Enter the name of the book you want to delete :")
                 author = input("please Enter the Author name :")
                 self.b1.remove_book(book, author)
