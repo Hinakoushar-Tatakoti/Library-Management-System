@@ -1,3 +1,4 @@
 HINA,aaa@1234,hina@1234,ADMIN
 ROSE,bbb@1234,rose@gmail.com,STUDENT
 SALVS,ccc@1234,salvatorlouis@gmail.com,STAFF
+STEFAN,eldich@1234,edlich@gmail.com,STAFF

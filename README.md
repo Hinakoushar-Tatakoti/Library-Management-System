@@ -25,6 +25,8 @@ Or
 
 I have craeted .exe file of library system just click on the library.exe file present inside the /output/library/library.exe and start using the application
 
+[Console OutPut](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Console_Output.JPG)
+
 ### Advance Software Engineering
 
 Hinakoushar Tatakoti
