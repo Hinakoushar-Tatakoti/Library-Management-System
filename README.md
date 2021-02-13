@@ -22,17 +22,17 @@ Unified Modeling Language is a general-purpose, developmental, modeling language
 
 Following are the UML diagrams for Library-Management-System.
 
-[Use case Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Use_case.png) 
+[Use case Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Use_case.jpg) 
 
 The purpose of use case diagram is to capture the dynamic aspect of a system.
 Items involved are 1)Functionalities to be represented as use case 2)Actors 3)Relationships among the use cases and actors.
 
-[Activity Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Activity_Diagram.png)
+[Activity Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Activity_Diagram.jpg)
 
 Activity diagram is basically a flowchart to represent the flow from one activity to another activity. The activity can be described as an operation of the system.
 The control flow is drawn from one operation to another. This flow can be sequential, branched, or concurrent. Activity diagrams deal with all type of flow control by using different elements such as fork, join, etc
       
-[Class Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Class_Diagram.PNG)
+[Class Diagram](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Class_Diagram.jpg)
 
  It represents the static view of an application. Class diagram is not only used for visualizing, describing, and documenting different aspects of a system but also for constructing executable code of the software application.
  Class diagram shows a collection of classes, interfaces, associations, collaborations, and constraints. It is also known as a structural diagram.
