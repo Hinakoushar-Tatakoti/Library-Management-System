@@ -10,7 +10,7 @@ books_db_path = os.path.join(directory, '/Library-Management-System/src/database
 
 class Books:
     def __init__(self, uname):
-        self.bk = list_of_books()
+        self.book_list = list_of_books()
         self._username = uname
 
     def display_books(self):
@@ -19,7 +19,7 @@ class Books:
             print(book)
 
     def borrow_book(self, book_name):
-        found = [book[0] == book_name for book in self.bk]
+        found = [book[0] == book_name for book in self.book_list]
         if found:
             issued_date = datetime.datetime.today()
             return_date = datetime.datetime.today() + datetime.timedelta(days=constants.NUMBER_OF_DAYS)
@@ -34,7 +34,7 @@ class Books:
         update_issued_book_data(username, book_name)
 
     def search_by_book_name(self, book_name):
-        for book in self.bk:
+        for book in self.book_list:
             if book_name == book[0]:
                 return True
         return False
