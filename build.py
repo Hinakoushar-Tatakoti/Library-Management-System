@@ -7,6 +7,7 @@ use_plugin("python.install_dependencies")
 use_plugin("python.flake8")
 use_plugin("python.coverage")
 use_plugin("python.distutils")
+#use_plugin("python.pdoc")
 
 
 name = "Library-Management-System"
@@ -19,6 +20,10 @@ default_task = "publish"
 
 @init
 def set_properties(project):
-    project.set_property("coverage_break_build", False) # default is True
+    project.set_property('pdoc_source', 'src/main/python')
+    project.set_property('pdoc_output_dir','/docs')
+    project.set_property('pdoc_module_name', 'src.main.python')
+    project.set_property('pdoc_command_args',['--html'])
 
+    project.set_property("coverage_break_build", False) # default is True
 
