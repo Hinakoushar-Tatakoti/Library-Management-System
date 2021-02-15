@@ -60,6 +60,14 @@ The control flow is drawn from one operation to another. This flow can be sequen
 **2) DDD Of LMS**
 
 The domain driven design approach is used for complex needs, connecting the implementation to an evolving model of the core business concepts. It puts the focus on the problem domain and basically helps identify the architecture and inform about the mechanics that the software needs to replicate.To create a Library Management System,I have a good understanding of what library is all about, and the domain of library.
+There 4 main DDD common terms
+
+   1. Context: The setting in which a word or statement appears that determines its meaning. Statements about a model can only be understood in a context.
+   2. Model: A system of abstractions that describes selected aspects of a domain and can be used to solve problems related to that domain.
+   3. Ubiquitous Language: A language structured around the domain model and used by all team members to connect all the activities of the team with the software.
+   4. Bounded Context: A description of a boundary (typically a subsystem, or the work of a specific team) within which a particular model is defined and applicable.
+    
+[DDD](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/DDD_Design.JPG)
 
 **3) SonarCloud Metrics.**
 
@@ -107,11 +115,11 @@ Clean code means code should be as efficient, readable, and maintainable as poss
 
 [Constant File](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_CostantFile.JPG)
 
-[Constant variables_usage](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_constant_usage.JPG)
+[Constant Variables Usage](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_constant_usage.JPG)
 
 **4. one def serves one purpose**
 
-[One_pupose](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_One_purpose.JPG)
+[One pupose](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_One_purpose.JPG)
 
 **5. use of decorators**
 
@@ -121,11 +129,15 @@ Clean code means code should be as efficient, readable, and maintainable as poss
 **5) Build Management using Pybuilder.**
 I have used PyBuilder to build the LMS project using command called **pyb** and below are the files and image contains the information.	
 
-[Build-File](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/master/build.py)
+[Build File](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/master/build.py)
 
-[SetUp-File](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/master/setup.py)
+[SetUp File](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/master/setup.py)
 
 [PyBuilder](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Build_Result.PNG)
+
+[Generated Docs Index](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Docs_index.JPG)
+
+[Generated Docs Module](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Docs_module.JPG)
 
 **6) Unit-Tests using uinitest.**
 
@@ -195,15 +207,15 @@ In the example below, a function is assigned to a variable user_username_pass_ch
 
 [Function Stored As Variable](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Func_Stored_As_var1.JPG)
 
-[Actual Function ](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Func_Stored_As_var2.JPG)
+[Actual Function](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Func_Stored_As_var2.JPG)
 
 Below example shows functions that can accept other functions as arguments.validate_type is a function which accepts valid_usertype_check function as param.
 
 [Function being called](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Func_As_Func_param1.JPG)
 
-[Function_used](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Func_As_Func_param3.JPG)
+[Function Used](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Func_As_Func_param3.JPG)
 
-[Actual_Fnction](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Func_As_Func_param2.JPG)
+[Actual Function](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/Func_As_Func_param2.JPG)
 
 
 **5. Anonymous functions**
