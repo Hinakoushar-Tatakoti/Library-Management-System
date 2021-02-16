@@ -67,7 +67,7 @@ There 4 main DDD common terms
    3. Ubiquitous Language: A language structured around the domain model and used by all team members to connect all the activities of the team with the software.
    4. Bounded Context: A description of a boundary (typically a subsystem, or the work of a specific team) within which a particular model is defined and applicable.
     
-[DDD](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/DDD_Design.JPG)
+[DDD](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/task/DDD.pdf)
 
 **3) SonarCloud Metrics.**
 
@@ -104,11 +104,11 @@ Clean code means code should be as efficient, readable, and maintainable as poss
 
 **1.Use of meaningful and pronounceable variable names**
 
-[Meaningful_name](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_Naming_convetions.JPG)
+[Meaningful Name](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_Naming_convetions.JPG)
 
 **2. Custom Exception Handling for better eadable and code maintainance**
 
-[Exception_Handling](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_Exception_Handling.JPG)
+[Exception Handling](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/main/images/CCD_Exception_Handling.JPG)
 
 
 **3. Use of constant File or Constant variables**
@@ -128,6 +128,7 @@ Clean code means code should be as efficient, readable, and maintainable as poss
 
 **5) Build Management using Pybuilder.**
 I have used PyBuilder to build the LMS project using command called **pyb** and below are the files and image contains the information.	
+You Can find the generated docs inside the docs/python folder.
 
 [Build File](https://github.com/Hinakoushar-Tatakoti/Library-Management-System/blob/master/build.py)
 
